@@ -1,0 +1,59 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+
+public class Snow {
+    
+    private static DecimalFormat df2 = new DecimalFormat(".##");
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Employee name: ");
+        String name = sc.next();
+
+        System.out.print("Enter Weekly Gross : ");
+        double weeklyGross = sc.nextDouble();
+        double bonus = (weeklyGross * 0.085);
+
+        System.out.println("\n"
+                + "\n"
+                + "\n");
+        
+
+        System.out.println("*****SNOW ENTERPRISES********");
+        System.out.println("Employee Name : \t" + name);
+        System.out.println("Gross Salary : \t\t" + df2.format(weeklyGross));
+        System.out.println("Bonus : \t\t" + df2.format(bonus));
+        System.out.println("Net Weekly Salary : \t" + df2.format(netWeekly(bonus)));
+        System.out.println("Classification : \t" + classify(netWeekly(bonus)));
+        
+    }
+    
+    public static double netWeekly(double bonus) {
+        double netWeeklySalary = bonus + 1500;
+        return netWeeklySalary;
+
+    }
+
+    public static char classify(double netWeeklySalary) {
+        char classify = ' ';
+        if (netWeeklySalary >= 1500 && netWeeklySalary <= 1999) {
+            classify = 'A';
+        } else if (netWeeklySalary >= 2000 && netWeeklySalary <= 2499) {
+            classify = 'B';
+        } else if (netWeeklySalary >= 2500 && netWeeklySalary <= 2999) {
+            classify = 'C';
+        } else if (netWeeklySalary >= 3000 && netWeeklySalary <= 3499) {
+            classify = 'D';
+        } else if (netWeeklySalary >= 3500 && netWeeklySalary <= 3999) {
+            classify = 'E';
+        } else if (netWeeklySalary >= 4000) {
+            classify = 'F';
+        }
+
+        return classify;
+
+    }
+
+}
